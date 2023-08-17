@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Product from "./Product";
-import SearchBar from "./SearchBar"; // Import the SearchBar component
+import SearchBar from "./SearchBar";
 
 interface ProductListProps {
   products: { name: string; price: number; inventory: number }[];
@@ -28,7 +28,7 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
 
   const handleSearchChange = (newSearchTerm: string) => {
     setSearchTerm(newSearchTerm);
-    setCurrentPage(1); // Reset to first page when search term changes
+    setCurrentPage(1);
   };
 
   return (
@@ -40,12 +40,13 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
         <>
           <div className="product-list">
             {currentItems.map((product, index) => (
-              <Product
-                key={index}
-                name={product.name}
-                price={product.price}
-                inventory={product.inventory}
-              />
+              <div key={product.name}>
+                <Product
+                  name={product.name}
+                  price={product.price}
+                  inventory={product.inventory}
+                />
+              </div>
             ))}
           </div>
           <div className="pagination">

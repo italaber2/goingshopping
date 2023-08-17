@@ -14,9 +14,9 @@ function SearchBar({ searchTerm, onSearchChange }: SearchBarProps) {
     <div className="search-bar">
       <input
         type="text"
-        placeholder="Search by product name"
         value={searchTerm}
         onChange={handleSearchChange}
+        placeholder="🔍 Search by product name"
       />
     </div>
   );
