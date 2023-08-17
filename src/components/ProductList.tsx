@@ -1,20 +1,70 @@
+import React, { useState } from "react";
 import Product from "./Product";
+import SearchBar from "./SearchBar"; // Import the SearchBar component
 
 interface ProductListProps {
   products: { name: string; price: number; inventory: number }[];
+  itemsPerPage: number;
 }
 
-function ProductList({ products }: ProductListProps) {
+function ProductList({ products, itemsPerPage }: ProductListProps) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filteredProducts = products.filter((product) =>
+    product.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = filteredProducts.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const handleSearchChange = (newSearchTerm: string) => {
+    setSearchTerm(newSearchTerm);
+    setCurrentPage(1); // Reset to first page when search term changes
+  };
+
   return (
-    <div className="product-list">
-      {products.map((product) => (
-        <Product
-          key={product.name}
-          name={product.name}
-          price={product.price}
-          inventory={product.inventory}
-        />
-      ))}
+    <div>
+      <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
+      {filteredProducts.length === 0 ? (
+        <p>No results found.</p>
+      ) : (
+        <>
+          <div className="product-list">
+            {currentItems.map((product, index) => (
+              <Product
+                key={index}
+                name={product.name}
+                price={product.price}
+                inventory={product.inventory}
+              />
+            ))}
+          </div>
+          <div className="pagination">
+            {Array.from({
+              length: Math.ceil(filteredProducts.length / itemsPerPage),
+            }).map((_, index) => (
+              <button
+                key={index}
+                className={`page-button ${
+                  currentPage === index + 1 ? "active" : ""
+                }`}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 }

@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #282c34;
+  font-family: Arial, sans-serif;
+}
+
+.App {
+  text-align: center;
+  min-height: 100vh;
+}
+
+.App-header {
+  padding: 20px;
+  color: white;
+}
+
+.product-list {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.product {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-button {
+  background-color: #f4f4f4;
+  border: 1px solid #ddd;
+  color: #333;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 0 5px;
+  padding: 5px 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.page-button.active {
+  background-color: #282c34;
+  border-color: white;
+  color: #fff;
+}
+
+.page-button:hover {
+  background-color: #007bff;
+  border-color: white;
+  color: #fff;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 12.5%;
+  text-align: left;
+}
