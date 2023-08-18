@@ -12,7 +12,8 @@ nav ul {
 }
 
 nav li {
-  margin-right: 10px;
+  margin: 5px;
+  font-size: 40px;
 }
 
 nav a {

@@ -10,10 +10,10 @@ function AppRouter() {
       <nav>
         <ul>
           <li>
-            <Link href="/">Home</Link>
+            <Link href="/">🏠</Link>
           </li>
           <li>
-            <Link href="/cart">My Shopping Cart</Link>
+            <Link href="/cart">🛒</Link>
           </li>
         </ul>
       </nav>
