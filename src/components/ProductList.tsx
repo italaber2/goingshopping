@@ -35,7 +35,7 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
     <div>
       <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
       {filteredProducts.length === 0 ? (
-        <p>No results found.</p>
+        <p>No results found :(</p>
       ) : (
         <>
           <div className="product-list">

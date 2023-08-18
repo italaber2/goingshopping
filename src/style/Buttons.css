@@ -1,5 +1,4 @@
-.add-to-basket-button,
-.view-product-details-button {
+.button {
   background-color: #282c34;
   transition: background-color 0.3s, color 0.3s;
   font-size: 16px;
@@ -11,14 +10,13 @@
   margin: 0px 5px;
 }
 
-.add-to-basket-button:hover,
-.view-product-details-button:hover {
+.button:hover {
   background-color: #007bff;
   border-color: white;
   color: #fff;
 }
 
-.add-to-basket-button:disabled {
+.button:disabled {
   background-color: #d3d3d37c;
   cursor: not-allowed;
 }

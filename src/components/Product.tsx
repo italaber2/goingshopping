@@ -11,7 +11,7 @@ function Product({ name, price, inventory }: ProductProps) {
   const [isAdded, setIsAdded] = useState(false);
   const [currentInventory, setCurrentInventory] = useState(inventory);
   const [currentBasketInventory, setCurrentBasketInventory] = useState(0);
-  const [popoverVisible, setPopoverVisible] = useState(false); // New state for popover visibility
+  const [popoverVisible, setPopoverVisible] = useState(false);
 
   const handleAddToBasket = () => {
     if (currentInventory > 0) {
@@ -31,12 +31,12 @@ function Product({ name, price, inventory }: ProductProps) {
 
   return (
     <div className="product">
-      <h3>{name}</h3>
+      <h2>{name}</h2>
+      <p>€{price.toFixed(2)}</p>
       <p>Inventory: {currentInventory}</p>
-      <p>${price.toFixed(2)}</p>
       {isAdded ? (
         <button
-          className="add-to-basket-button"
+          className="button"
           onClick={handleAddToBasket}
           disabled={currentInventory === 0}
         >
@@ -45,27 +45,26 @@ function Product({ name, price, inventory }: ProductProps) {
       ) : (
         <>
           <button
-            className="add-to-basket-button"
+            className="button"
             onClick={handleAddToBasket}
             disabled={currentInventory === 0}
           >
             {currentInventory === 0 ? "Out of Stock" : "Add to Basket"}
           </button>
-          <button
-            className="view-product-details-button"
-            onClick={openProductDetails}
-          >
-            View Product Details
-          </button>
-          {popoverVisible && (
-            <div className="popover-overlay">
-              <ProductDetails
-                product={{ name, price, inventory: currentInventory }}
-                onClose={closeProductDetails}
-              />
-            </div>
-          )}
         </>
+      )}
+      <button className="button" onClick={openProductDetails}>
+        View Product Details
+      </button>
+      {popoverVisible && (
+        <div className="overlay">
+          <div className="modal">
+            <ProductDetails
+              product={{ name, price, inventory: currentInventory }}
+              onClose={closeProductDetails}
+            />
+          </div>
+        </div>
       )}
     </div>
   );

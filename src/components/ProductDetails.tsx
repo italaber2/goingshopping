@@ -10,9 +10,11 @@ function ProductDetails({ product, onClose }: ProductDetailsProps) {
     <div className="product-details-popover">
       <div className="popover-content">
         <h2>{product.name}</h2>
-        <p>Price: ${product.price.toFixed(2)}</p>
+        <p>€{product.price.toFixed(2)}</p>
         <p>Inventory: {product.inventory}</p>
-        <button onClick={onClose}>Close</button>
+        <button className="button" onClick={onClose}>
+          Close
+        </button>
       </div>
     </div>
   );
