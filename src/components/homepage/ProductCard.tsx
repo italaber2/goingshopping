@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import ProductDetails from "./ProductDetails";
+import ProductDetailsLayer from "./ProductDetailsLayer";
 
-interface ProductProps {
+interface ProductCardProps {
   name: string;
   price: number;
   inventory: number;
   onAddToCart: (productName: string) => void;
 }
 
-function Product({ name, price, inventory, onAddToCart }: ProductProps) {
+function ProductCard({
+  name,
+  price,
+  inventory,
+  onAddToCart,
+}: ProductCardProps) {
   const [isAdded, setIsAdded] = useState(false);
   const [currentInventory, setCurrentInventory] = useState(inventory);
   const [currentBasketInventory, setCurrentBasketInventory] = useState(0);
-  const [popoverVisible, setPopoverVisible] = useState(false);
+  const [layerVisible, setLayerVisible] = useState(false);
 
   const handleAddToBasket = () => {
     if (currentInventory > 0) {
@@ -24,11 +29,11 @@ function Product({ name, price, inventory, onAddToCart }: ProductProps) {
   };
 
   const openProductDetails = () => {
-    setPopoverVisible(true);
+    setLayerVisible(true);
   };
 
   const closeProductDetails = () => {
-    setPopoverVisible(false);
+    setLayerVisible(false);
   };
 
   return (
@@ -58,10 +63,10 @@ function Product({ name, price, inventory, onAddToCart }: ProductProps) {
       <button className="button" onClick={openProductDetails}>
         View Product Details
       </button>
-      {popoverVisible && (
+      {layerVisible && (
         <div className="overlay">
           <div className="modal">
-            <ProductDetails
+            <ProductDetailsLayer
               product={{ name, price, inventory: currentInventory }}
               onClose={closeProductDetails}
             />
@@ -72,4 +77,4 @@ function Product({ name, price, inventory, onAddToCart }: ProductProps) {
   );
 }
 
-export default Product;
+export default ProductCard;

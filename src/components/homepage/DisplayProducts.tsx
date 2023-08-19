@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-import Product from "./Product";
+import ProductCard from "./ProductCard";
 import SearchBar from "./SearchBar";
-import ShoppingCart from "./ShoppingCart";
+import ShoppingCart from "./ViewBasket";
 
 interface ProductListProps {
   products: { name: string; price: number; inventory: number }[];
   itemsPerPage: number;
 }
 
-function ProductList({ products, itemsPerPage }: ProductListProps) {
+function DisplayProducts({ products, itemsPerPage }: ProductListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [cartItems, setCartItems] = useState<string[]>([]);
@@ -48,7 +48,7 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
           <div className="product-list">
             {currentItems.map((product, index) => (
               <div key={product.name}>
-                <Product
+                <ProductCard
                   name={product.name}
                   price={product.price}
                   inventory={product.inventory}
@@ -78,4 +78,4 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
   );
 }
 
-export default ProductList;
+export default DisplayProducts;
