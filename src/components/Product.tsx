@@ -5,9 +5,10 @@ interface ProductProps {
   name: string;
   price: number;
   inventory: number;
+  onAddToCart: (productName: string) => void;
 }
 
-function Product({ name, price, inventory }: ProductProps) {
+function Product({ name, price, inventory, onAddToCart }: ProductProps) {
   const [isAdded, setIsAdded] = useState(false);
   const [currentInventory, setCurrentInventory] = useState(inventory);
   const [currentBasketInventory, setCurrentBasketInventory] = useState(0);
@@ -18,6 +19,7 @@ function Product({ name, price, inventory }: ProductProps) {
       setIsAdded(true);
       setCurrentInventory(currentInventory - 1);
       setCurrentBasketInventory(currentBasketInventory + 1);
+      onAddToCart(name);
     }
   };
 

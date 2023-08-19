@@ -6,6 +6,7 @@ import "./style/Buttons.css";
 import "./style/Pagination.css";
 import "./style/Popover.css";
 import "./style/SearchBar.css";
+import "./style/ShoppingCart.css";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

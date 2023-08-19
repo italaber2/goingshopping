@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Product from "./Product";
 import SearchBar from "./SearchBar";
+import ShoppingCart from "./ShoppingCart";
 
 interface ProductListProps {
   products: { name: string; price: number; inventory: number }[];
@@ -10,6 +11,7 @@ interface ProductListProps {
 function ProductList({ products, itemsPerPage }: ProductListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [cartItems, setCartItems] = useState<string[]>([]);
 
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -31,9 +33,14 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
     setCurrentPage(1);
   };
 
+  const handleAddToCart = (productName: string) => {
+    setCartItems((prevCartItems) => [...prevCartItems, productName]);
+  };
+
   return (
     <div>
       <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
+      <ShoppingCart cartItemsCount={cartItems.length} />
       {filteredProducts.length === 0 ? (
         <p>No results found :(</p>
       ) : (
@@ -45,6 +52,7 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
                   name={product.name}
                   price={product.price}
                   inventory={product.inventory}
+                  onAddToCart={() => handleAddToCart(product.name)}
                 />
               </div>
             ))}

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Route, Switch } from "wouter";
 import App from "../App";
-import ShoppingCart from "./ShoppingCart";
+import ShoppingCartPage from "./ShoppingCartPage";
 import "../style/Navigation.css";
 
 function AppRouter() {
@@ -13,13 +13,13 @@ function AppRouter() {
             <Link href="/">🏠</Link>
           </li>
           <li>
-            <Link href="/cart">🛒</Link>
+            <Link href="/shoppingCartPage">🛒</Link>
           </li>
         </ul>
       </nav>
       <Switch>
         <Route path="/" component={App} />
-        <Route path="/cart" component={ShoppingCart} />
+        <Route path="/cart" component={ShoppingCartPage} />
       </Switch>
     </div>
   );
