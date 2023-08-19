@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// import ViewBasketLayer from "./ViewBasketLayer";
 
 interface BasketProps {
   cartItemsCount: number;
@@ -20,7 +21,7 @@ function ViewBasket({ cartItemsCount }: BasketProps) {
       {layerVisible && (
         <div className="overlay">
           <div className="modal">
-            <h2 className="layer-headline">Current Order</h2>
+            <h2>Current Order</h2>
             <div className="order-overview">
               <div className="item-description">Taco</div>
               <div className="price-and-quantity">Fish</div>

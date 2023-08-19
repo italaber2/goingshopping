@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ProductCard from "./ProductCard";
 import SearchBar from "./SearchBar";
 import ShoppingCart from "./ViewBasket";
+import Pagination from "./Pagination";
 
 interface ProductListProps {
   products: { name: string; price: number; inventory: number }[];
@@ -12,11 +13,10 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [cartItems, setCartItems] = useState<string[]>([]);
-
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredProducts.slice(
@@ -57,21 +57,11 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
               </div>
             ))}
           </div>
-          <div className="pagination">
-            {Array.from({
-              length: Math.ceil(filteredProducts.length / itemsPerPage),
-            }).map((_, index) => (
-              <button
-                key={index}
-                className={`page-button ${
-                  currentPage === index + 1 ? "active" : ""
-                }`}
-                onClick={() => handlePageChange(index + 1)}
-              >
-                {index + 1}
-              </button>
-            ))}
-          </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
         </>
       )}
     </div>
