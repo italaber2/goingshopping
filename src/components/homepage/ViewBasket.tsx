@@ -16,7 +16,7 @@ function ViewBasket({ cartItemsCount }: BasketProps) {
   return (
     <div className="shopping-cart">
       <button className="button" onClick={openBasketLayer}>
-        View Basket
+        View Items In Basket
       </button>
       {layerVisible && (
         <div className="overlay">
