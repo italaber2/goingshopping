@@ -8,7 +8,7 @@ interface ProductListProps {
   itemsPerPage: number;
 }
 
-function DisplayProducts({ products, itemsPerPage }: ProductListProps) {
+function ProductList({ products, itemsPerPage }: ProductListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [cartItems, setCartItems] = useState<string[]>([]);
@@ -78,4 +78,4 @@ function DisplayProducts({ products, itemsPerPage }: ProductListProps) {
   );
 }
 
-export default DisplayProducts;
+export default ProductList;
