@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ProductCard from "./ProductCard";
 import SearchBar from "./SearchBar";
-import ShoppingCart from "./ViewBasket";
+import ViewBasket from "./ViewBasket";
 import Pagination from "./Pagination";
 
 interface ProductListProps {
@@ -40,7 +40,7 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
   return (
     <div>
       <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
-      <ShoppingCart cartItemsCount={cartItems.length} />
+      <ViewBasket cartItems={cartItems} cartItemsCount={cartItems.length} />
       {filteredProducts.length === 0 ? (
         <p>No results found :(</p>
       ) : (

@@ -1,18 +1,21 @@
 import React, { useState } from "react";
-// import ViewBasketLayer from "./ViewBasketLayer";
 
 interface BasketProps {
   cartItemsCount: number;
+  cartItems: string[];
 }
 
-function ViewBasket({ cartItemsCount }: BasketProps) {
+function ViewBasket({ cartItems, cartItemsCount }: BasketProps) {
   const [layerVisible, setLayerVisible] = useState(false);
+
   const openBasketLayer = () => {
     setLayerVisible(true);
   };
+
   const closeBasketLayer = () => {
     setLayerVisible(false);
   };
+
   return (
     <div className="shopping-cart">
       <button className="button" onClick={openBasketLayer}>
@@ -23,8 +26,13 @@ function ViewBasket({ cartItemsCount }: BasketProps) {
           <div className="modal">
             <h2>Current Order</h2>
             <div className="order-overview">
-              <div className="item-description">Taco</div>
-              <div className="price-and-quantity">Fish</div>
+              {cartItems.map((itemName, index) => (
+                <div key={index} className="item-description">
+                  {itemName}
+                </div>
+              ))}
+              {/* <div className="item-description">Taco</div>
+              <div className="price-and-quantity">Fish</div> */}
             </div>
             <div className="order-summary">Taco Fish Summary</div>
             <button className="button" onClick={closeBasketLayer}>
