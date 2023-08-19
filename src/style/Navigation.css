@@ -13,12 +13,11 @@ nav ul {
 
 nav li {
   margin: 5px;
-  font-size: 40px;
+  font-size: 20px;
 }
 
 nav a {
   font-family: Arial, sans-serif;
   text-decoration: none;
   color: white;
-  font-weight: bold;
 }

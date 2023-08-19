@@ -20,7 +20,17 @@ function ViewBasket({ cartItemsCount }: BasketProps) {
       </button>
       {layerVisible && (
         <div className="overlay">
-          <div className="modal"></div>
+          <div className="modal">
+            <h2 className="layer-headline">Current Order</h2>
+            <div className="order-overview">
+              <div className="item-description">Taco</div>
+              <div className="price-and-quantity">Fish</div>
+            </div>
+            <div className="order-summary">Taco Fish Summary</div>
+            <button className="button" onClick={closeBasketLayer}>
+              Close
+            </button>
+          </div>
         </div>
       )}
       <span className="cart-icon">🛒</span>

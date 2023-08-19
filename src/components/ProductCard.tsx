@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProductDetailsLayer from "./ProductDetailsLayer";
-import { currentInventoryProductDetails } from "../../data/currentInventory"; // Import the inventory data
+import { currentInventoryProductDetails } from "../data/currentInventory";
 
 interface ProductCardProps {
   name: string;

@@ -1,6 +1,6 @@
 import "./style/App.css";
 import { currentInventory } from "./data/currentInventory";
-import DisplayProducts from "./components/homepage/DisplayProducts";
+import DisplayProducts from "./components/DisplayProducts";
 
 function App() {
   return (

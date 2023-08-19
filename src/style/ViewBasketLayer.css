@@ -1,0 +1,28 @@
+.layer-headline {
+  background-color: white;
+  font-family: Arial, sans-serif;
+  color: black;
+  text-align: center;
+  font-size: 24px;
+}
+
+.order-overview {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.item-description,
+.price-and-quanitity {
+  padding: 0 10px;
+}
+
+.order-summary {
+  width: 100%;
+  padding: 20px 0px;
+  border-top: 1px solid #ccc;
+  font-size: 18px;
+  font-weight: bold;
+}
