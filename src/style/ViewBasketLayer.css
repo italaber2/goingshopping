@@ -8,20 +8,45 @@
 
 .order-overview {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 10px;
   margin-bottom: 20px;
   text-align: left;
 }
 
 .item-description {
-  grid-column: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0 10px;
 }
 
-.price-and-quanitity {
-  grid-column: 2;
-  padding: 0 10px;
+.item-name {
+  font-size: 18px;
+  flex-grow: 1;
+}
+
+.remove-button {
+  background-color: #282c34;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 16px;
+  color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.remove-button:hover {
+  background-color: #007bff;
+  border-color: white;
+  color: #fff;
+}
+
+.remove-button:disabled {
+  background-color: #d3d3d37c;
+  cursor: not-allowed;
 }
 
 .order-summary {
@@ -30,4 +55,9 @@
   border-top: 1px solid #ccc;
   font-size: 18px;
   font-weight: bold;
+}
+
+.modal {
+  max-height: 80vh;
+  overflow-y: auto;
 }

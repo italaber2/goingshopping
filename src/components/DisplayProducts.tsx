@@ -4,12 +4,12 @@ import SearchBar from "./SearchBar";
 import ViewBasket from "./ViewBasket";
 import Pagination from "./Pagination";
 
-interface ProductListProps {
-  products: { name: string; price: number; inventory: number }[];
+interface DisplayProductsProps {
+  products: { name: string; inventory: number }[];
   itemsPerPage: number;
 }
 
-function ProductList({ products, itemsPerPage }: ProductListProps) {
+function DisplayProducts({ products, itemsPerPage }: DisplayProductsProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [cartItems, setCartItems] = useState<string[]>([]);
@@ -35,27 +35,29 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
     setCurrentPage(1);
   };
 
+  const handleAddToCart = (productName: string) => {
+    setCartItems((prevCartItems) => [...prevCartItems, productName]);
+  };
+
   return (
     <div>
       <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
-      <ViewBasket cartItems={cartItems} cartItemsCount={cartItems.length} />
+      <ViewBasket
+        cartItems={cartItems}
+        cartItemsCount={cartItems.length}
+        setCartItems={setCartItems} // Pass the setCartItems function
+      />
       {filteredProducts.length === 0 ? (
         <p>No results found :(</p>
       ) : (
         <>
           <div className="product-list">
             {currentItems.map((product, index) => (
-              <div key={index}>
+              <div key={product.name}>
                 <ProductCard
                   name={product.name}
-                  price={product.price}
                   inventory={product.inventory}
-                  onAddToCart={() => {
-                    setCartItems((prevCartItems) => [
-                      ...prevCartItems,
-                      product.name,
-                    ]);
-                  }}
+                  onAddToCart={() => handleAddToCart(product.name)}
                 />
               </div>
             ))}
@@ -71,4 +73,4 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
   );
 }
 
-export default ProductList;
+export default DisplayProducts;

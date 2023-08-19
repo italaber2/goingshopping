@@ -1,12 +1,12 @@
 export const inventory = [
-  { name: "Apple", price: 10, inventory: 1 },
-  { name: "Banana", price: 20, inventory: 1 },
-  { name: "Cherry", price: 30, inventory: 2 },
-  { name: "Date", price: 40, inventory: 3 },
-  { name: "Elderberry", price: 50, inventory: 5 },
-  { name: "Fig", price: 60, inventory: 8 },
-  { name: "Grape", price: 60, inventory: 13 },
-  { name: "Honeydew", price: 60, inventory: 21 },
+  { name: "Apple", inventory: 1 },
+  { name: "Banana", inventory: 1 },
+  { name: "Cherry", inventory: 2 },
+  { name: "Date", inventory: 3 },
+  { name: "Elderberry", inventory: 5 },
+  { name: "Fig", inventory: 8 },
+  { name: "Grape", inventory: 13 },
+  { name: "Honeydew", inventory: 21 },
 ];
 
 export const inventoryProductDetails = [

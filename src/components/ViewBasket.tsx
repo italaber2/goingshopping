@@ -3,9 +3,10 @@ import React, { useState } from "react";
 interface BasketProps {
   cartItemsCount: number;
   cartItems: string[];
+  setCartItems: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-function ViewBasket({ cartItems, cartItemsCount }: BasketProps) {
+function ViewBasket({ cartItems, cartItemsCount, setCartItems }: BasketProps) {
   const [layerVisible, setLayerVisible] = useState(false);
 
   const openBasketLayer = () => {
@@ -14,6 +15,15 @@ function ViewBasket({ cartItems, cartItemsCount }: BasketProps) {
 
   const closeBasketLayer = () => {
     setLayerVisible(false);
+  };
+
+  const handleRemoveFromCart = (itemName: string) => {
+    const itemIndex = cartItems.indexOf(itemName);
+    if (itemIndex !== -1) {
+      const newCartItems = cartItems.slice(); // Create a copy of cartItems array
+      newCartItems.splice(itemIndex, 1); // Remove the item at the specified index
+      setCartItems(newCartItems);
+    }
   };
 
   return (
@@ -28,11 +38,21 @@ function ViewBasket({ cartItems, cartItemsCount }: BasketProps) {
             <div className="order-overview">
               {cartItems.map((item, index) => (
                 <div key={index} className="item-description">
-                  {item}
+                  <div className="item-name">{item}</div>
+                  <div className="remove-button-container">
+                    <button
+                      className="remove-button"
+                      onClick={() => handleRemoveFromCart(item)}
+                    >
+                      Remove
+                    </button>
+                  </div>
                 </div>
               ))}
             </div>
-            <div className="order-summary">Taco Fish Summary</div>
+            <div className="order-summary">
+              Total number of items: {cartItemsCount}
+            </div>
             <button className="button" onClick={closeBasketLayer}>
               Close
             </button>

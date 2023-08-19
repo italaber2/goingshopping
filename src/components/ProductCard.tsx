@@ -4,17 +4,11 @@ import { inventoryProductDetails } from "../data/inventory";
 
 interface ProductCardProps {
   name: string;
-  price: number;
   inventory: number;
   onAddToCart: (productName: string) => void;
 }
 
-function ProductCard({
-  name,
-  price,
-  inventory,
-  onAddToCart,
-}: ProductCardProps) {
+function ProductCard({ name, inventory, onAddToCart }: ProductCardProps) {
   const [isAdded, setIsAdded] = useState(false);
   const [currentInventory, setCurrentInventory] = useState(inventory);
   const [currentBasketInventory, setCurrentBasketInventory] = useState(0);
@@ -44,7 +38,6 @@ function ProductCard({
   return (
     <div className="product">
       <h2>{name}</h2>
-      <p>€{price.toFixed(2)}</p>
       <p>Inventory: {currentInventory}</p>
       {isAdded ? (
         <button
