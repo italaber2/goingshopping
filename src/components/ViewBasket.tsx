@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import ViewBasketLayer from "./ViewBasketLayer";
 
 interface BasketProps {
   cartItemsCount: number;
