@@ -1,0 +1,18 @@
+.layer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 4px;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  max-width: 20%;
+  overflow: auto;
+  /* Enable scrolling if content exceeds modal height */
+}
+
+.layer-content img {
+  max-width: 50%;
+  height: auto;
+}

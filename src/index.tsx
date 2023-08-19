@@ -5,6 +5,7 @@ import "./style/App.css";
 import "./style/Buttons.css";
 import "./style/Pagination.css";
 import "./style/Layer.css";
+import "./style/ProductDetailsLayer.css";
 import "./style/SearchBar.css";
 import "./style/ShoppingCart.css";
 import "./style/ShoppingCartPage.css";

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ProductDetailsLayer from "./ProductDetailsLayer";
+import { currentInventoryProductDetails } from "../../data/currentInventory"; // Import the inventory data
 
 interface ProductCardProps {
   name: string;
@@ -36,6 +37,10 @@ function ProductCard({
     setLayerVisible(false);
   };
 
+  const matchingProduct = currentInventoryProductDetails.find(
+    (product) => product.name === name
+  );
+
   return (
     <div className="product">
       <h2>{name}</h2>
@@ -63,11 +68,15 @@ function ProductCard({
       <button className="button" onClick={openProductDetails}>
         View Product Details
       </button>
-      {layerVisible && (
+      {layerVisible && matchingProduct !== undefined && (
         <div className="overlay">
           <div className="modal">
             <ProductDetailsLayer
-              product={{ name, price, inventory: currentInventory }}
+              product={{
+                name,
+                picture: matchingProduct.picture,
+                description: matchingProduct.description,
+              }}
               onClose={closeProductDetails}
             />
           </div>
