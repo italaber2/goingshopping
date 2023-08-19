@@ -1,5 +1,5 @@
 import "./style/App.css";
-import { currentInventory } from "./data/currentInventory";
+import { inventory } from "./data/inventory";
 import DisplayProducts from "./components/DisplayProducts";
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Online Shopping Website</h1>
-        <DisplayProducts products={currentInventory} itemsPerPage={3} />
+        <DisplayProducts products={inventory} itemsPerPage={3} />
       </header>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProductDetailsLayer from "./ProductDetailsLayer";
-import { currentInventoryProductDetails } from "../data/currentInventory";
+import { inventoryProductDetails } from "../data/inventory";
 
 interface ProductCardProps {
   name: string;
@@ -37,7 +37,7 @@ function ProductCard({
     setLayerVisible(false);
   };
 
-  const matchingProduct = currentInventoryProductDetails.find(
+  const matchingProduct = inventoryProductDetails.find(
     (product) => product.name === name
   );
 
