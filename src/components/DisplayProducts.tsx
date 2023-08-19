@@ -13,9 +13,11 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [cartItems, setCartItems] = useState<string[]>([]);
+
   const filteredProducts = products.filter((product) =>
     product.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -33,10 +35,6 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
     setCurrentPage(1);
   };
 
-  const handleAddToCart = (productName: string) => {
-    setCartItems((prevCartItems) => [...prevCartItems, productName]);
-  };
-
   return (
     <div>
       <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
@@ -47,12 +45,17 @@ function ProductList({ products, itemsPerPage }: ProductListProps) {
         <>
           <div className="product-list">
             {currentItems.map((product, index) => (
-              <div key={product.name}>
+              <div key={index}>
                 <ProductCard
                   name={product.name}
                   price={product.price}
                   inventory={product.inventory}
-                  onAddToCart={() => handleAddToCart(product.name)}
+                  onAddToCart={() => {
+                    setCartItems((prevCartItems) => [
+                      ...prevCartItems,
+                      product.name,
+                    ]);
+                  }}
                 />
               </div>
             ))}

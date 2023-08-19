@@ -26,13 +26,11 @@ function ViewBasket({ cartItems, cartItemsCount }: BasketProps) {
           <div className="modal">
             <h2>Current Order</h2>
             <div className="order-overview">
-              {cartItems.map((itemName, index) => (
+              {cartItems.map((item, index) => (
                 <div key={index} className="item-description">
-                  {itemName}
+                  {item}
                 </div>
               ))}
-              {/* <div className="item-description">Taco</div>
-              <div className="price-and-quantity">Fish</div> */}
             </div>
             <div className="order-summary">Taco Fish Summary</div>
             <button className="button" onClick={closeBasketLayer}>

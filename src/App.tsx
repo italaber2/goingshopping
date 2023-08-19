@@ -1,4 +1,3 @@
-import "./style/App.css";
 import { inventory } from "./data/inventory";
 import DisplayProducts from "./components/DisplayProducts";
 
