@@ -7,7 +7,6 @@ describe("Website load", () => {
   });
   it("opens another website", () => {
     cy.fixture("inventory").then((inventory) => {
-      console.log(inventory);
       console.log(inventory[0]);
     });
   });
