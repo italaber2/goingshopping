@@ -16,6 +16,8 @@ export default defineConfig({
   video: true,
   videosFolder: "/cypress/videos",
   e2e: {
-    baseUrl: "http://localhost:3000",
+    baseUrl: "https://goingshopping.vercel.app",
+    specPattern: "src/tests/cypress/specs/*.spec.ts",
+    supportFile: "src/tests/cypress/support/index.ts",
   },
 });
