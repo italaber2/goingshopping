@@ -24,10 +24,12 @@ Cypress.Commands.add("checkExpectedSearchResults", () => {
   cy.fixture("inventory").then((inventory) => {
     let i = 0;
     const namesArray: string[] = inventory.map((item: any) => item.name);
-    // console.log(namesArray);
     while (i < inventory.length) {
       console.log(namesArray[i]);
       cy.get('[data-testid="search-bar"]').click().type(namesArray[i]);
+      cy.get('[data-testid="product-name"]')
+        .invoke("text")
+        .should("eq", namesArray[i]);
       cy.get('[data-testid="search-bar"]').clear();
       i++;
     }
