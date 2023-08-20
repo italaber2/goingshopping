@@ -1,10 +1,8 @@
 describe("Website load", () => {
-  // beforeEach(() => {
-  //   cy.interceptGraph();
-  //   cy.wait(500);
-  // });
-  it("opens the website", () => {
+  beforeEach(() => {
     cy.visit("https://goingshopping.vercel.app/");
+  });
+  it("opens the website", () => {
     cy.get('[data-testid="app-title"]').should("be.visible");
   });
 });

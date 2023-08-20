@@ -48,7 +48,7 @@ function DisplayProducts({ products, itemsPerPage }: DisplayProductsProps) {
         setCartItems={setCartItems} // Pass the setCartItems function
       />
       {filteredProducts.length === 0 ? (
-        <p>No results found :(</p>
+        <p>No results found #sadPanda</p>
       ) : (
         <>
           <div data-testid="product-list-display" className="product-list">
