@@ -6,6 +6,9 @@ describe("Website load", () => {
     cy.get('[data-testid="app-title"]').should("be.visible");
   });
   it("opens another website", () => {
-    cy.command();
+    cy.fixture("inventory").then((inventory) => {
+      console.log(inventory);
+      console.log(inventory[0]);
+    });
   });
 });

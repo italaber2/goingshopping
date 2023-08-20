@@ -11,12 +11,13 @@ function SearchBar({ searchTerm, onSearchChange }: SearchBarProps) {
   };
 
   return (
-    <div data-testid="search-bar" className="search-bar">
+    <div className="search-bar">
       <input
         type="text"
         value={searchTerm}
         onChange={handleSearchChange}
         placeholder="🔍 Search by product name"
+        data-testid="search-bar"
       />
     </div>
   );
