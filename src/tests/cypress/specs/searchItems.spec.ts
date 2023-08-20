@@ -6,6 +6,7 @@ describe("Search functionality", () => {
   context("Successful search", () => {
     it("renders the expected search result", () => {
       cy.get('[data-testid="app-title"]').should("be.visible");
+      cy.checkExpectedSearchResults();
     });
   });
   context("Unsuccessful search", () => {

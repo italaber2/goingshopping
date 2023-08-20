@@ -15,11 +15,21 @@ export {};
 declare global {
   namespace Cypress {
     interface Chainable {
-      command(): void;
+      checkExpectedSearchResults(): void;
     }
   }
 }
 
-Cypress.Commands.add("command", () => {
-  cy.visit("https://www.google.com");
+Cypress.Commands.add("checkExpectedSearchResults", () => {
+  cy.fixture("inventory").then((inventory) => {
+    let i = 0;
+    const namesArray: string[] = inventory.map((item: any) => item.name);
+    // console.log(namesArray);
+    while (i < inventory.length) {
+      console.log(namesArray[i]);
+      cy.get('[data-testid="search-bar"]').click().type(namesArray[i]);
+      cy.get('[data-testid="search-bar"]').clear();
+      i++;
+    }
+  });
 });

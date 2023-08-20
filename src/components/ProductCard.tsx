@@ -37,7 +37,7 @@ function ProductCard({ name, inventory, onAddToCart }: ProductCardProps) {
 
   return (
     <div data-testid="product-card" className="product">
-      <h2>{name}</h2>
+      <h2 data-testid="product-name">{name}</h2>
       <p>Inventory: {currentInventory}</p>
       <button
         data-testid="add-to-basket-button"
