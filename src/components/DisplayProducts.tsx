@@ -51,7 +51,7 @@ function DisplayProducts({ products, itemsPerPage }: DisplayProductsProps) {
         <p>No results found :(</p>
       ) : (
         <>
-          <div className="product-list">
+          <div data-testid="product-list-display" className="product-list">
             {currentItems.map((product, index) => (
               <div key={product.name}>
                 <ProductCard

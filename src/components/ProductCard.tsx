@@ -36,29 +36,22 @@ function ProductCard({ name, inventory, onAddToCart }: ProductCardProps) {
   );
 
   return (
-    <div className="product">
+    <div data-testid="product-card" className="product">
       <h2>{name}</h2>
       <p>Inventory: {currentInventory}</p>
-      {isAdded ? (
-        <button
-          className="button"
-          onClick={handleAddToBasket}
-          disabled={currentInventory === 0}
-        >
-          {currentInventory === 0 ? "Out of Stock" : "Add to Basket"}
-        </button>
-      ) : (
-        <>
-          <button
-            className="button"
-            onClick={handleAddToBasket}
-            disabled={currentInventory === 0}
-          >
-            {currentInventory === 0 ? "Out of Stock" : "Add to Basket"}
-          </button>
-        </>
-      )}
-      <button className="button" onClick={openProductDetails}>
+      <button
+        data-testid="add-to-basket-button"
+        className="button"
+        onClick={handleAddToBasket}
+        disabled={currentInventory === 0}
+      >
+        {currentInventory === 0 ? "Out of Stock" : "Add to Basket"}
+      </button>
+      <button
+        data-testid="view-product-details-button"
+        className="button"
+        onClick={openProductDetails}
+      >
         View Product Details
       </button>
       {layerVisible && matchingProduct !== undefined && (

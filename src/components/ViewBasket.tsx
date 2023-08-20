@@ -28,19 +28,33 @@ function ViewBasket({ cartItems, cartItemsCount, setCartItems }: BasketProps) {
 
   return (
     <div className="shopping-cart">
-      <button className="button" onClick={openBasketLayer}>
+      <button
+        data-testid="view-basket-button"
+        className="button"
+        onClick={openBasketLayer}
+      >
         View Items In Basket
       </button>
       {layerVisible && (
         <div className="overlay">
-          <div className="modal">
-            <h2>Current Order</h2>
+          <div data-testid="view-basket-layer" className="modal">
+            <h2 data-testid="basket-title">Current Order</h2>
             <div className="order-overview">
               {cartItems.map((item, index) => (
-                <div key={index} className="item-description">
-                  <div className="item-name">{item}</div>
+                <div
+                  key={index}
+                  data-testid="view-basket-item-description"
+                  className="item-description"
+                >
+                  <div
+                    data-testid="view-basket-item-name"
+                    className="item-name"
+                  >
+                    {item}
+                  </div>
                   <div className="remove-button-container">
                     <button
+                      data-testid="view-basket-remove-button"
                       className="remove-button"
                       onClick={() => handleRemoveFromCart(item)}
                     >
@@ -50,17 +64,26 @@ function ViewBasket({ cartItems, cartItemsCount, setCartItems }: BasketProps) {
                 </div>
               ))}
             </div>
-            <div className="order-summary">
+            <div
+              data-testid="view-basket-order-summary"
+              className="order-summary"
+            >
               Total number of items: {cartItemsCount}
             </div>
-            <button className="button" onClick={closeBasketLayer}>
+            <button
+              data-testid="view-basket-close-button"
+              className="button"
+              onClick={closeBasketLayer}
+            >
               Close
             </button>
           </div>
         </div>
       )}
       <span className="cart-icon">🛒</span>
-      <span className="cart-count">{cartItemsCount}</span>
+      <span data-testid="current-cart-count" className="cart-count">
+        {cartItemsCount}
+      </span>
     </div>
   );
 }

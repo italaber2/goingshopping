@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Online Shopping Website</h1>
+        <h1>The Totally Bug Free Online Shop</h1>
         <DisplayProducts products={inventory} itemsPerPage={3} />
       </header>
     </div>

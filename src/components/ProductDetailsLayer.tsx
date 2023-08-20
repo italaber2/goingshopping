@@ -5,12 +5,25 @@ interface ProductDetailsProps {
 
 function ProductDetailsLayer({ product, onClose }: ProductDetailsProps) {
   return (
-    <div className="layer">
+    <div data-testid="product-details-layer" className="layer">
       <div className="layer-content">
-        <h2>{product.name}</h2>
-        <img src={product.picture} alt={product.name} />
-        <p className="product-description">{product.description}</p>
-        <button className="button" onClick={onClose}>
+        <h2 data-testid="product-details-layer-title">{product.name}</h2>
+        <img
+          data-testid="product-details-layer-image"
+          src={product.picture}
+          alt={product.name}
+        />
+        <p
+          data-testid="product-details-layer-description"
+          className="product-description"
+        >
+          {product.description}
+        </p>
+        <button
+          data-testid="product-details-layer-close-button"
+          className="button"
+          onClick={onClose}
+        >
           Close
         </button>
       </div>

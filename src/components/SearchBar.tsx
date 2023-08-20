@@ -11,7 +11,7 @@ function SearchBar({ searchTerm, onSearchChange }: SearchBarProps) {
   };
 
   return (
-    <div className="search-bar">
+    <div data-testid="search-bar" className="search-bar">
       <input
         type="text"
         value={searchTerm}

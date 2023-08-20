@@ -10,10 +10,14 @@ function AppRouter() {
       <nav>
         <ul>
           <li>
-            <Link href="/">🏠 Home</Link>
+            <Link data-testid="home-page-link" href="/">
+              🏠 Home
+            </Link>
           </li>
           <li>
-            <Link href="/checkout">🛒 Checkout</Link>
+            <Link data-testid="checkout-page-link" href="/checkout">
+              🛒 Checkout
+            </Link>
           </li>
         </ul>
       </nav>

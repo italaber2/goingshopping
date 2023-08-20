@@ -10,12 +10,13 @@ function Pagination({
   onPageChange,
 }: PaginationProps) {
   return (
-    <div className="pagination">
+    <div data-testid="pagination" className="pagination">
       {Array.from({ length: totalPages }).map((_, index) => (
         <button
           key={index}
           className={`page-button ${currentPage === index + 1 ? "active" : ""}`}
           onClick={() => onPageChange(index + 1)}
+          data-testid="pagination-page-button"
         >
           {index + 1}
         </button>
