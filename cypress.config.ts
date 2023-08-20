@@ -1,16 +1,21 @@
 import { defineConfig } from "cypress";
 
 export default defineConfig({
-  e2e: {
-    setupNodeEvents(on, config) {
-      // implement node event listeners here
-    },
+  downloadsFolder: "/cypress/downloads",
+  fixturesFolder: "/cypress/fixtures",
+  reporter: "mochawesome",
+  reporterOptions: {
+    overwrite: false,
+    html: false,
+    json: true,
+    reportDir: "/cypress/reports/json",
   },
-
-  component: {
-    devServer: {
-      framework: "create-react-app",
-      bundler: "webpack",
-    },
+  screenshotsFolder: "/cypress/screenshots",
+  chromeWebSecurity: false,
+  defaultCommandTimeout: 8000,
+  video: true,
+  videosFolder: "/cypress/videos",
+  e2e: {
+    baseUrl: "http://localhost:3000",
   },
 });
